@@ -10,3 +10,13 @@ thead>tr>th {
       padding-left: 20px; 
       padding-right: 20px; 
   }
+
+  form {
+    position: relative;
+}
+.closeIcon {
+    position: absolute;
+    color: rgb(255, 0, 43);
+    right: 15px;
+    top: 8px;
+}

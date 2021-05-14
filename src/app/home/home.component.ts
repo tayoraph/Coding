@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   public ResponseArray: any = {} ;
   p: number = 1;
   numberPerDisplay = 7;
-  filter
+  filter = '';
 
   /**
       *
@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
   reverse: boolean = false;
   ngOnInit() {
     this.GetCountryResults();
-    // this.GetTotalResultOfACountry();
     
   }
 
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit {
     this.covid19Service.getCountryResults(country)
       .subscribe(res => {
         this.TotalCountryResult = res;
-        // console.log(res);
         this.loaderService.hide();
       })
   }
@@ -64,17 +62,8 @@ export class HomeComponent implements OnInit {
     this.key = key;
     this.reverse = !this.reverse;
   }
-  sortConfirmed(key){
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
-  sortDeaths(key){
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
-  sortRecovered(key){
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
 
+  clear(){
+    this.filter = '';
+  }
 }

@@ -13,8 +13,12 @@
                                 <h4 class="title">
                                     <span class="col text-left"> Covid results</span>
                                     <span class="col text-right" style="float: right;">
-                                        <input style="float: right;" class="form-control" type="text" name="search"
-                                            [(ngModel)]="filter">
+                                        <form>
+                                            <input placeholder="search" class="form-control" type="search" name="search"
+                                                [(ngModel)]="filter">
+                                            <i *ngIf="filter?.length > 0" class="fa fa-close fa-1x closeIcon"
+                                                (click)="clear()"></i>
+                                        </form>
                                     </span>
                                 </h4>
                             </div>
@@ -31,17 +35,12 @@
                                     </th>
 
 
-                                    <th (click)="sortConfirmed('confirmed')">Confirmed
-                                        <span class="glyphicon sort-icon"
-                                            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    <th>Confirmed
                                     </th>
-                                    <th (click)="sortDeaths('deaths')">Deaths
-                                        <span class="glyphicon sort-icon"
-                                            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    <th>Deaths
+
                                     </th>
-                                    <th (click)="sortRecovered('recovered')">Recovered
-                                        <span class="glyphicon sort-icon"
-                                            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    <th>Recovered
                                     </th>
                                     <th>Last Updated Time</th>
                                     <th>City</th>
@@ -49,7 +48,7 @@
                             </thead>
                             <tbody>
                                 <tr
-                                    *ngFor="let row of TotalCountryResult?.data.covid19Stats | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 10, currentPage: p, totalItems: TotalCountryResult?.data.covid19Stats?.length }; index as i;">
+                                    *ngFor="let row of TotalCountryResult?.data.covid19Stats | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; index as i;">
                                     <!-- <td *ngFor="let cell of row">{{cell}}</td> -->
                                     <td scope="row">{{i+1}}</td>
                                     <td>{{row.country}}</td>
@@ -62,7 +61,7 @@
                                     <td><span style="color:darksalmon" *ngIf="row.city == null">
                                             No record
                                         </span>
-                                        <span  *ngIf="row.city != null">
+                                        <span *ngIf="row.city != null">
                                             {{row.city}}
                                         </span>
                                     </td>
