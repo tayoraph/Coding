@@ -1,0 +1,12 @@
+thead>tr>th {
+    cursor: pointer;
+}
+
+.elorpagination /deep/.ngx-pagination .current {
+    background: #ac323c !important;
+  }
+
+  .custom{
+      padding-left: 20px; 
+      padding-right: 20px; 
+  }
